@@ -1,8 +1,5 @@
 #!/bin/bash
 
-read email;
-
-
 # set time
 dpkg-reconfigure tzdata;
 
