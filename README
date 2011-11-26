@@ -1,6 +1,7 @@
 A starter script to get a basic web server up and running on a clean install of Ubuntu.
 
 ROADMAP (in no particular order)
+* RVM
 * Firewall
 * Lock down SSH options
 * FTP access

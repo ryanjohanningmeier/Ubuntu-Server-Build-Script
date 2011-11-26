@@ -73,6 +73,11 @@ sed -i 's/"#"/";"/' /etc/php5/conf.d/imap.ini
 sed -i 's/"#"/";"/' /etc/php5/conf.d/mcrypt.ini
 
 
+# install and configure RVM
+# ...
+
+
+
 # PEAR modules
 pear install I18N;
 pear install -f System_Daemon;
@@ -122,4 +127,6 @@ apt-get -y install postfix;
 
 
 # done!
-echo "Thank you for using The Build Script."; echo "If you have any suggestions, questions or bug reports please find us on GitHub."; echo "https://github.com/jakeasmith/Ubuntu-Server-Build-Script/"
+echo "Thank you for using The Build Script."; 
+echo "If you have any suggestions, questions or bug reports please find us on GitHub."; 
+echo "https://github.com/jakeasmith/Ubuntu-Server-Build-Script/"
