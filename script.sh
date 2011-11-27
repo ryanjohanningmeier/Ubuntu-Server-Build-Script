@@ -111,7 +111,8 @@ apt-get -y install \
 	siege \
 	nmap \
 	byobu \
-	htop;
+	htop \
+	nano;
 
 
 # install brute force detection
