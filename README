@@ -9,6 +9,7 @@ ROADMAP (in no particular order)
 * Rails
 * GIT
 * Common host hacks (media temple)
+* SVN
 
 Build out different config options for:
 * Full stack LAMP server
