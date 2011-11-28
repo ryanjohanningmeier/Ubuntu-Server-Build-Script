@@ -8,6 +8,9 @@ dpkg-reconfigure tzdata;
 apt-get update && apt-get -y dist-upgrade;
 
 
+# need to generate a ssh public key for git
+
+
 # must haves
 apt-get -y install \
 	build-essential \
@@ -16,7 +19,10 @@ apt-get -y install \
 	gcc \
 	make \
 	zlib1g-dev \
-	libmysql++-dev;
+	libmysql++-dev \
+	curl \
+	gunzip \
+	bunzip2;
 
 
 # security and monitoring
@@ -38,6 +44,20 @@ a2enmod alias deflate status rewrite ssl;
 a2dismod negotiation authn_file authz_default authz_groupfile;
 chmod -R a+x,g+x /var/www/
 chown -R www-data.www-data /var/www/
+
+
+# source version control
+apt-get -y install \
+	subversion \
+	subversion-tools \
+	libapache2-svn;
+	
+
+# source version control git
+apt-get -y install \
+	git-core \
+	gitosis;
+-H -u gitosis gitosis-init < initialKeyFileName # initialKeyFileName is the key file with a .pub and needs to be replaced here
 
 
 # php
@@ -74,7 +94,9 @@ sed -i 's/"#"/";"/' /etc/php5/conf.d/mcrypt.ini
 
 
 # install and configure RVM
-# ...
+bash < <(curl -s https://raw.github.com/wayneeseguin/rvm/master/binscripts/rvm-installer )
+echo '[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm" # Load RVM function' >> ~/.bash_profile
+source .bash_profile
 
 
 
@@ -89,13 +111,6 @@ gpg -a --export CD2EFD2A | apt-key add -
 echo deb http://repo.percona.com/apt lenny main >> /etc/apt/sources.list
 echo deb-src http://repo.percona.com/apt lenny main >> /etc/apt/sources.list
 apt-get update && apt-get -y install percona-server-server 
-
-
-# source version control
-apt-get -y install \
-	subversion \
-	subversion-tools \
-	libapache2-svn;
 
 
 # restart servers
